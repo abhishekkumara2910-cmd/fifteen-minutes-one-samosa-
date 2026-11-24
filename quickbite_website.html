@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickBite — Fifteen Minutes, One Samosa</title>
+<style>
+:root{--navy:#18345b;--blue:#2458a6;--orange:#ef762f;--cream:#fff8ef;--ink:#1d2939;--muted:#667085;--line:#e7eaf0;--green:#16845b;--shadow:0 14px 40px rgba(24,52,91,.09)}
+*{box-sizing:border-box}body{margin:0;background:#f7f8fb;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+button,input{font:inherit}button{cursor:pointer;border:0}.topbar{background:var(--navy);color:#fff;padding:13px max(5vw,22px);display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:21px;letter-spacing:-.5px}.logo{width:36px;height:36px;border-radius:12px;background:var(--orange);display:grid;place-items:center;font-size:20px}.topbar small{color:#cbd7e8}.nav{display:flex;gap:8px}.nav button{background:transparent;color:#dce6f3;padding:9px 13px;border-radius:10px;font-weight:650}.nav button.active,.nav button:hover{background:#ffffff1c;color:#fff}
+.wrap{max-width:1160px;margin:auto;padding:28px 22px 60px}.hero{background:linear-gradient(115deg,#18345b,#28558c);color:white;border-radius:22px;padding:34px;display:grid;grid-template-columns:1.4fr .8fr;align-items:center;gap:20px;overflow:hidden;position:relative}.eyebrow{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:#ffd4b8;font-weight:800}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.05;letter-spacing:-1.7px;margin:12px 0}.hero p{color:#dce7f4;line-height:1.65;max-width:590px;margin:0 0 22px}.hero-art{font-size:100px;text-align:center;filter:drop-shadow(0 12px 15px #071b3670);transform:rotate(-8deg)}.primary{background:var(--orange);color:#fff;padding:12px 18px;border-radius:11px;font-weight:800;box-shadow:0 7px 16px #ef762f40}.secondary{background:#edf2f8;color:var(--navy);padding:11px 15px;border-radius:10px;font-weight:750}.hero .secondary{background:#ffffff20;color:#fff;margin-left:8px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}.stat,.panel,.food-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.stat{padding:17px 19px}.stat b{display:block;font-size:23px;color:var(--navy)}.stat span{color:var(--muted);font-size:13px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:30px 0 15px}.section-head h2{margin:0;color:var(--navy);font-size:24px;letter-spacing:-.5px}.section-head p{margin:5px 0 0;color:var(--muted);font-size:14px}.filters{display:flex;gap:7px;flex-wrap:wrap}.filters button{background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:30px;color:#475467;font-weight:700;font-size:13px}.filters button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.food-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.food-card{overflow:hidden}.food-visual{height:145px;display:grid;place-items:center;font-size:70px;background:linear-gradient(135deg,#fff2e6,#fffaf5)}.food-info{padding:15px}.food-info h3{margin:0 0 5px;font-size:17px}.food-info p{margin:0;color:var(--muted);font-size:13px}.food-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:15px}.price{font-weight:850;color:var(--navy);font-size:18px}.add{background:var(--navy);color:#fff;padding:8px 13px;border-radius:9px;font-weight:750}.add:hover{background:var(--blue)}
+.content-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:16px;margin-top:24px}.panel{padding:20px}.panel h3{margin:0 0 15px;color:var(--navy)}.cart-empty{color:var(--muted);font-size:14px;padding:12px 0}.cart-row,.order-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}.cart-row:last-child,.order-row:last-child{border:0}.qty{display:flex;align-items:center;gap:8px}.qty button{width:24px;height:24px;border-radius:7px;background:#edf2f8;color:var(--navy);font-weight:800}.total{display:flex;justify-content:space-between;font-weight:850;margin:17px 0;color:var(--navy)}.full{width:100%}.note{background:var(--cream);border:1px solid #f6dfc9;padding:12px;border-radius:11px;color:#8b4a1d;font-size:13px;line-height:1.5;margin-top:12px}
+.hidden{display:none!important}.badge{display:inline-block;background:#e8f7f0;color:var(--green);font-size:11px;font-weight:800;padding:5px 8px;border-radius:30px}.token{background:#f0f5fc;border:1px dashed #a9bdd9;border-radius:14px;text-align:center;padding:18px;margin:14px 0}.token strong{font-size:32px;color:var(--navy);display:block;letter-spacing:2px}.progress{display:flex;gap:6px;margin:14px 0}.progress span{height:7px;background:#e7eaf0;border-radius:9px;flex:1}.progress span.done{background:var(--green)}.small{font-size:12px;color:var(--muted)}
+.vendor-tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.vendor-tools button{padding:9px 12px;border-radius:9px;background:#edf2f8;color:var(--navy);font-weight:750}.order-status{font-size:12px;font-weight:800;color:#94601c;background:#fff4df;padding:5px 8px;border-radius:20px}.status-ready{color:var(--green);background:#e8f7f0}
+.footer{text-align:center;color:#8993a3;font-size:12px;margin-top:35px}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero-art{display:none}.food-grid{grid-template-columns:repeat(2,1fr)}.content-grid{grid-template-columns:1fr}}
+@media(max-width:540px){.topbar{align-items:flex-start;flex-direction:column}.nav{width:100%;overflow:auto}.wrap{padding:18px 14px 40px}.hero{padding:25px 21px}.stats{gap:8px}.stat{padding:13px}.stat b{font-size:19px}.stat span{font-size:11px}.food-grid{grid-template-columns:1fr 1fr}.food-visual{height:110px;font-size:54px}.food-info{padding:11px}.food-info h3{font-size:15px}.food-info p{font-size:11px}.food-bottom{align-items:flex-start;gap:6px;flex-direction:column}.section-head{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="topbar">
+ <div><div class="brand"><span class="logo">🥟</span> QuickBite</div><small>Fifteen Minutes, One Samosa</small></div>
+ <nav class="nav"><button class="active" id="studentTab" onclick="showView('student')">Student view</button><button id="vendorTab" onclick="showView('vendor')">Vendor dashboard</button></nav>
+</header>
+<main class="wrap">
+<section id="studentView">
+ <div class="hero">
+  <div><div class="eyebrow">Beat the break-time rush</div><h1>Your break is short.<br>Ordering should be too.</h1><p>Pre-order your favourite canteen snacks, collect your digital token and pick up your food when it is ready. Less waiting for you, smoother service for the vendor.</p><button class="primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Order your snack →</button><button class="secondary" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">How it works</button></div>
+  <div class="hero-art">🥟 🥪</div>
+ </div>
+ <div class="stats"><div class="stat"><b>3 simple steps</b><span>Choose · Pay at counter · Pick up</span></div><div class="stat"><b>Less queueing</b><span>Organised digital order tokens</span></div><div class="stat"><b>Clear updates</b><span>Know when your order is ready</span></div></div>
+ <div class="section-head" id="menu"><div><h2>Today's canteen menu</h2><p>Choose items and add them to your order.</p></div><div class="filters"><button class="active" onclick="filterMenu('All',this)">All</button><button onclick="filterMenu('Snacks',this)">Snacks</button><button onclick="filterMenu('Drinks',this)">Drinks</button></div></div>
+ <div class="food-grid" id="foodGrid"></div>
+ <div class="content-grid">
+  <section class="panel"><h3>🧾 Your order</h3><div id="cartItems" class="cart-empty">Your cart is empty. Add something tasty from the menu!</div><div id="cartTotal" class="total hidden"><span>Total</span><span id="totalAmount">₹0</span></div><button class="primary full" id="placeOrder" onclick="placeOrder()" disabled>Place pre-order</button><div class="note">Demo checkout: no online payment is collected. Pay the vendor at pickup.</div></section>
+  <section class="panel" id="how"><h3>⚡ How QuickBite works</h3><div class="order-row"><span>1. Select food</span><b>Browse menu</b></div><div class="order-row"><span>2. Get token</span><b>Order number</b></div><div class="order-row"><span>3. Track status</span><b>Live updates</b></div><div class="order-row"><span>4. Collect</span><b>Show your token</b></div><p class="small">Estimated preparation time is illustrative in this student prototype.</p></section>
+ </div>
+ <section class="panel hidden" id="tracking" style="margin-top:18px"><h3>📍 Your order status</h3><div class="token"><span class="small">YOUR PICKUP TOKEN</span><strong id="tokenNumber">QB-001</strong><span class="badge" id="trackStatus">Order received</span></div><div class="progress"><span id="p1" class="done"></span><span id="p2"></span><span id="p3"></span></div><p id="trackMessage" class="small">Your order has been sent to the canteen.</p><button class="secondary" onclick="showView('vendor')">Open vendor demo to update status →</button></section>
+</section>
+<section id="vendorView" class="hidden">
+ <div class="hero"><div><div class="eyebrow">Canteen partner workspace</div><h1>One clear queue.<br>Calmer service.</h1><p>See incoming orders in one place, prepare them in sequence and mark each token ready for collection.</p><span class="badge">Demo vendor dashboard</span></div><div class="hero-art">👩‍🍳</div></div>
+ <div class="stats"><div class="stat"><b id="incomingCount">0</b><span>Active orders</span></div><div class="stat"><b id="readyCount">0</b><span>Ready for pickup</span></div><div class="stat"><b>One queue</b><span>All orders in one view</span></div></div>
+ <section class="panel"><div class="section-head" style="margin-top:0"><div><h2>Order management</h2><p>Update order status as the vendor.</p></div></div><div class="vendor-tools"><button onclick="setAllStatus('Preparing')">Mark active as preparing</button><button onclick="setAllStatus('Ready')">Mark active as ready</button></div><div id="vendorOrders" class="cart-empty">No orders yet. Place a test order in Student view.</div></section>
+ <div class="note">This is a front-end demonstration. In a real deployment, student orders would sync to the vendor dashboard through a secure database and each vendor would have an authenticated account.</div>
+</section>
+<div class="footer">QUICKBITE · INT335 DESIGN THINKING · P20</div>
+</main>
+<script>
+const foods=[
+ {id:1,name:'Samosa',desc:'Crispy potato-filled snack',price:15,emoji:'🥟',cat:'Snacks'},
+ {id:2,name:'Veg Sandwich',desc:'Fresh and filling',price:35,emoji:'🥪',cat:'Snacks'},
+ {id:3,name:'Aloo Patty',desc:'Warm, flaky and savoury',price:20,emoji:'🥯',cat:'Snacks'},
+ {id:4,name:'Masala Maggi',desc:'Hot noodles, made fresh',price:40,emoji:'🍜',cat:'Snacks'},
+ {id:5,name:'Lemon Soda',desc:'Cool and refreshing',price:25,emoji:'🥤',cat:'Drinks'},
+ {id:6,name:'Tea',desc:'A classic cup of chai',price:10,emoji:'☕',cat:'Drinks'}
+];
+let cart={},orders=[],currentOrder=null,token=0;
+function renderMenu(category='All'){
+ const list=foods.filter(f=>category==='All'||f.cat===category);
+ document.getElementById('foodGrid').innerHTML=list.map(f=>`<article class="food-card"><div class="food-visual">${f.emoji}</div><div class="food-info"><h3>${f.name}</h3><p>${f.desc}</p><div class="food-bottom"><span class="price">₹${f.price}</span><button class="add" onclick="addToCart(${f.id})">+ Add</button></div></div></article>`).join('');
+}
+function filterMenu(cat,btn){document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderMenu(cat)}
+function addToCart(id){cart[id]=(cart[id]||0)+1;renderCart()}
+function changeQty(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];renderCart()}
+function renderCart(){
+ const entries=Object.entries(cart),el=document.getElementById('cartItems');
+ if(!entries.length){el.className='cart-empty';el.textContent='Your cart is empty. Add something tasty from the menu!';document.getElementById('cartTotal').classList.add('hidden');document.getElementById('placeOrder').disabled=true;return}
+ el.className='';el.innerHTML=entries.map(([id,q])=>{let f=foods.find(x=>x.id==id);return `<div class="cart-row"><div><b>${f.name}</b><div class="small">₹${f.price} each</div></div><div class="qty"><button onclick="changeQty(${id},-1)">−</button><b>${q}</b><button onclick="changeQty(${id},1)">+</button><b>₹${f.price*q}</b></div></div>`}).join('');
+ let total=entries.reduce((s,[id,q])=>s+foods.find(f=>f.id==id).price*q,0);document.getElementById('totalAmount').textContent='₹'+total;document.getElementById('cartTotal').classList.remove('hidden');document.getElementById('placeOrder').disabled=false;
+}
+function placeOrder(){
+ if(!Object.keys(cart).length)return;token++;let items=Object.entries(cart).map(([id,q])=>({name:foods.find(f=>f.id==id).name,qty:q}));let total=Object.entries(cart).reduce((s,[id,q])=>s+foods.find(f=>f.id==id).price*q,0);
+ currentOrder={token:'QB-'+String(token).padStart(3,'0'),items,total,status:'Received',time:'~8–12 min'};orders.unshift(currentOrder);cart={};renderCart();document.getElementById('tracking').classList.remove('hidden');updateTracking();renderVendor();document.getElementById('tracking').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function updateTracking(){
+ if(!currentOrder)return;document.getElementById('tokenNumber').textContent=currentOrder.token;let s=currentOrder.status;document.getElementById('trackStatus').textContent=s;document.getElementById('trackMessage').textContent=s==='Ready'?'Your food is ready. Please collect it from the canteen counter.':s==='Preparing'?'The vendor is preparing your order. Please wait for the ready update.':'Your order has been received by the canteen.';
+ ['p1','p2','p3'].forEach((id,i)=>document.getElementById(id).classList.toggle('done',i<=(s==='Ready'?2:s==='Preparing'?1:0)));
+}
+function renderVendor(){
+ document.getElementById('incomingCount').textContent=orders.filter(o=>o.status!=='Ready').length;document.getElementById('readyCount').textContent=orders.filter(o=>o.status==='Ready').length;
+ let el=document.getElementById('vendorOrders');if(!orders.length){el.className='cart-empty';el.textContent='No orders yet. Place a test order in Student view.';return}
+ el.className='';el.innerHTML=orders.map(o=>`<div class="order-row" style="align-items:center"><div><b>${o.token}</b> <span class="order-status ${o.status==='Ready'?'status-ready':''}">${o.status}</span><div class="small">${o.items.map(i=>i.qty+' × '+i.name).join(', ')} · ₹${o.total} · ${o.time}</div></div><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="secondary" onclick="updateStatus('${o.token}','Preparing')">Preparing</button><button class="primary" style="padding:9px 11px" onclick="updateStatus('${o.token}','Ready')">Ready</button></div></div>`).join('');
+}
+function updateStatus(t,s){let o=orders.find(x=>x.token===t);if(o){o.status=s;if(currentOrder&&currentOrder.token===t)updateTracking();renderVendor()}}
+function setAllStatus(s){orders.filter(o=>o.status!=='Ready').forEach(o=>o.status=s);if(currentOrder)updateTracking();renderVendor()}
+function showView(view){document.getElementById('studentView').classList.toggle('hidden',view!=='student');document.getElementById('vendorView').classList.toggle('hidden',view!=='vendor');document.getElementById('studentTab').classList.toggle('active',view==='student');document.getElementById('vendorTab').classList.toggle('active',view==='vendor');if(view==='vendor')renderVendor();window.scrollTo({top:0,behavior:'smooth'})}
+renderMenu();renderCart();renderVendor();
+</script>
+</body>
+</html>
